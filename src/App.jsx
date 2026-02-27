@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+// Fetch all countries
+// fetch("https://openapi.programming-hero.com/api/all")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
 
-function App() {
-  const [count, setCount] = useState(0)
+// Fetch country by ISO code
+// fetch("https://openapi.programming-hero.com/api/alpha/116")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
 
+// Fetch countries by language
+// fetch("https://openapi.programming-hero.com/api/lang/english")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+// Fetch country by name
+// fetch("https://openapi.programming-hero.com/api/name/bangladesh")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+
+
+
+const App = () => {
+  const [users,setUsers] = useState([]);
+  useEffect(() => {
+    const fetchDatas = async () => {
+      try {
+        const res = await fetch("https://openapi.programming-hero.com/api/all");
+        const datas = res.json()
+        setUsers(datas);
+      } catch (error) {
+        console.log("Error Message",error);
+      }
+    }
+    fetchDatas()
+  }, [])
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      {
+        console.log(users)
+      }
+    </div>
+  );
+};
 
-export default App
+export default App;
