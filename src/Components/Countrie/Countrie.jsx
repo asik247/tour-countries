@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 
-const Countrie = ({ countrie,handleVisitedCountries }) => {
+const Countrie = ({ countrie, handleVisitedCountries, handleFlag, added }) => {
     // console.log(handleVisitedCountries);
     // console.log(countrie.name.common);
     const [visited, setVisited] = useState(false)
     const handleClicked = () => {
+
+        // if (!visited) {
+
+        //     window.alert(`Visited: ${countrie.name.common}`);
+        // }else{
+        //     window.alert(`Not Visited: ${countrie.name.common}`);
+
+        // }
+
+
         setVisited(!visited)
-        handleVisitedCountries(countrie.name.common)
+        handleVisitedCountries(countrie)
+        //  alert(countrie.name.common)
+
     }
 
     return (
@@ -18,6 +30,7 @@ const Countrie = ({ countrie,handleVisitedCountries }) => {
                 <p>Population: {countrie.population.population}</p>
                 <p>{countrie.population.population > 300000 ? "Big Countrie" : "Small Countrie"}</p>
                 <button onClick={handleClicked} className='btn'>{visited ? 'Visited' : 'NotVisite'} </button>
+                <button onClick={() => { handleFlag(countrie.flags.flags.png) }} className='btn'>Add Flag</button>
             </div>
         </div>
     );
