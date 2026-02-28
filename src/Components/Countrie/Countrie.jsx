@@ -8,10 +8,12 @@ const Countrie = ({countrie}) => {
     }
     
     return (
-        <div className='border-4 border-green-500 p-5'>
+        <div className={`border-4 border-green-500 p-5 ${visited && 'bg-red-600'}`}>
             <img className='w-full' src={countrie.flags.flags.png} alt="" />
-            <h1>{countrie.name.common}</h1>
-            <button onClick={handleClicked} className='btn'>{visited?'Visited':'NotVisite'} </button>
+            <h1>Name: {countrie.name.common}</h1>
+            <p>Population: {countrie.population.population}</p>
+            <p>{countrie.population.population > 300000 ? "Big Countrie":"Small Countrie"}</p>
+            <button  onClick={handleClicked} className='btn'>{visited?'Visited':'NotVisite'} </button>
         </div>
     );
 };
