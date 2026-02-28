@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-const Countrie = ({ countrie }) => {
+const Countrie = ({ countrie,handleVisitedCountries }) => {
+    // console.log(handleVisitedCountries);
     // console.log(countrie.name.common);
     const [visited, setVisited] = useState(false)
-    const [count, setCount] = useState(0);
     const handleClicked = () => {
         setVisited(!visited)
+        handleVisitedCountries()
     }
 
     return (
