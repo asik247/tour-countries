@@ -1,36 +1,32 @@
 import React, { useState } from 'react';
 
 const Countrie = ({ countrie, handleVisitedCountries, handleFlag, added }) => {
-    // console.log(handleVisitedCountries);
-    // console.log(countrie.name.common);
+    //  single countrie fetch countries props;
+
+    // useStae for btn visited;
     const [visited, setVisited] = useState(false)
     const handleClicked = () => {
-
-        // if (!visited) {
-
-        //     window.alert(`Visited: ${countrie.name.common}`);
-        // }else{
-        //     window.alert(`Not Visited: ${countrie.name.common}`);
-
-        // }
-
-
         setVisited(!visited)
         handleVisitedCountries(countrie)
-        //  alert(countrie.name.common)
-
+      
     }
 
     return (
+        // single countrie usign card code start here;
         <div>
             <h1 className='font-bold'>official Name: {countrie.name.official}</h1>
+            {/* visited ture hole dynamiclly style add  */}
             <div className={` p-5 ${visited && 'bg-red-600 rounded-2xl text-white'}`}>
+
                 <img className='w-full' src={countrie.flags.flags.png} alt="" />
                 <h1>Name: {countrie.name.common}</h1>
                 <p>Population: {countrie.population.population}</p>
                 <p>{countrie.population.population > 300000 ? "Big Countrie" : "Small Countrie"}</p>
+                {/* btn visited and toggling */}
                 <button onClick={handleClicked} className='btn'>{visited ? 'Visited' : 'NotVisite'} </button>
+                
                 <button onClick={() => { handleFlag(countrie.flags.flags.png) }} className='btn'>Add Flag</button>
+
             </div>
         </div>
     );
