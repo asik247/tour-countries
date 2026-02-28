@@ -6,7 +6,7 @@ const Countrie = ({ countrie,handleVisitedCountries }) => {
     const [visited, setVisited] = useState(false)
     const handleClicked = () => {
         setVisited(!visited)
-        handleVisitedCountries()
+        handleVisitedCountries(countrie.name.common)
     }
 
     return (
