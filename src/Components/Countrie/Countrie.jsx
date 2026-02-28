@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 
-const Countrie = ({countrie}) => {
+const Countrie = ({ countrie }) => {
     // console.log(countrie.name.common);
-    const [visited,setVisited] = useState(false)
-    const handleClicked = ()=>{
+    const [visited, setVisited] = useState(false)
+    const [count, setCount] = useState(0);
+    const handleClicked = () => {
         setVisited(!visited)
     }
-    
+
     return (
-        <div className={`border-4 border-green-500 p-5 ${visited && 'bg-red-600'}`}>
-            <img className='w-full' src={countrie.flags.flags.png} alt="" />
-            <h1>Name: {countrie.name.common}</h1>
-            <p>Population: {countrie.population.population}</p>
-            <p>{countrie.population.population > 300000 ? "Big Countrie":"Small Countrie"}</p>
-            <button  onClick={handleClicked} className='btn'>{visited?'Visited':'NotVisite'} </button>
+        <div>
+            <h1 className='font-bold'>official Name: {countrie.name.official}</h1>
+            <div className={` p-5 ${visited && 'bg-red-600 rounded-2xl text-white'}`}>
+                <img className='w-full' src={countrie.flags.flags.png} alt="" />
+                <h1>Name: {countrie.name.common}</h1>
+                <p>Population: {countrie.population.population}</p>
+                <p>{countrie.population.population > 300000 ? "Big Countrie" : "Small Countrie"}</p>
+                <button onClick={handleClicked} className='btn'>{visited ? 'Visited' : 'NotVisite'} </button>
+            </div>
         </div>
     );
 };
