@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Countrie = ({countrie}) => {
     // console.log(countrie.name.common);
+    const [visited,setVisited] = useState(false)
+    const handleClicked = ()=>{
+        setVisited(!visited)
+    }
     
     return (
-        <div>
-            <img src={countrie.flags.flags.png} alt="" />
+        <div className='border-4 border-green-500 p-5'>
+            <img className='w-full' src={countrie.flags.flags.png} alt="" />
             <h1>{countrie.name.common}</h1>
+            <button onClick={handleClicked} className='btn'>{visited?'Visited':'NotVisite'} </button>
         </div>
     );
 };
